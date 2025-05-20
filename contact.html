@@ -22,6 +22,9 @@
       color: #333;
       animation: fadeIn 1s ease-in;
       padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     @keyframes fadeIn {
@@ -41,6 +44,8 @@
       justify-content: space-between;
       align-items: center;
       animation: slideDown 0.7s ease-in-out;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     @keyframes slideDown {
@@ -68,6 +73,7 @@
       gap: 20px;
       font-weight: 600;
       font-size: 1rem;
+      flex-wrap: wrap;
     }
 
     nav ul li a {
@@ -105,10 +111,12 @@
       max-width: 600px;
       margin: 50px auto;
       background-color: #ffffffc7;
-      padding: 40px 40px 50px;
+      padding: 40px 30px 50px;
       border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       animation: fadeIn 1s ease;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     main h2 {
@@ -190,6 +198,63 @@
     footer a:hover {
       color: #fff;
       text-decoration: underline;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      header {
+        padding: 10px 20px;
+        justify-content: center;
+      }
+
+      .header-title {
+        margin: 0;
+        font-size: 1.5rem;
+        order: 3;
+        width: 100%;
+        text-align: center;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+
+      nav ul li {
+        width: 100%;
+        text-align: center;
+      }
+
+      main {
+        margin: 30px 15px;
+        padding: 30px 20px 40px;
+        max-width: 100%;
+      }
+
+      input, textarea {
+        font-size: 1rem;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      #logoutBtn {
+        align-self: center;
+      }
     }
   </style>
 </head>
