@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - AURA Store</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/fav/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/fav/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/fav/favicon-16x16.png" />  
+  <link rel="manifest" href="assets/site.webmanifest" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #e0f7fa, #f9f9f9);
+      color: #333;
+      animation: fadeIn 1s ease-in;
+      padding: 40px 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+      background-color: #2b433b;
+      padding: 15px 20px;
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      animation: slideDown 0.7s ease-in-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      color: #cbe9f7;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    .header-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      user-select: none;
+      margin: 10px auto;
+      flex-grow: 1;
+      text-align: center;
+      min-width: 200px;
+    }
+
+    #logoutBtn {
+      background: linear-gradient(45deg, #688793, #000000);
+      border: none;
+      color: white;
+      padding: 8px 18px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      white-space: nowrap;
+    }
+
+    #logoutBtn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, #e53935, #d32f2f);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 50px auto;
+      background-color: #ffffffc7;
+      padding: 40px 30px 50px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease;
+      color: #444;
+    }
+
+    main h2 {
+      color: #2b433b;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    main p {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      background-color: #2b3e2f;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 60px;
+      font-size: 0.95rem;
+      user-select: none;
+    }
+
+    footer a {
+      color: #cbe9f7;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      #logoutBtn {
+        margin-top: 10px;
+      }
+
+      .header-title {
+        margin: 10px 0;
+      }
+
+      main {
+        padding: 30px 20px 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="dashboard.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <h1 class="header-title">AURA Store</h1>
+    <button id="logoutBtn">Log Out</button>
+  </header>
+
+  <main>
+    <h2>About AURA</h2>
+    <p>Welcome to <strong>AURA</strong>, your local destination for authentic, comfortable, and stylish clothing. We believe in quality, simplicity, and supporting our community by crafting apparel that fits your lifestyle.</p>
+
+    <p>Founded in 2025, AURA focuses on bringing you clothes made with care, using local materials and skilled craftsmanship. We're proud to represent the spirit of our neighborhood and deliver fashion that's real and approachable — no flashy trends, just timeless pieces you can trust.</p>
+
+    <p>Thank you for choosing AURA and being part of our journey!</p>
+  </main>
+
+  <footer>
+    &copy; 2025 AURA Store. All rights reserved.<br />
+    <a href="https://www.facebook.com/share/1AKR8BUTaT/" target="_blank" rel="noopener noreferrer">Facebook</a> |
+    <a href="https://www.instagram.com/ahmed_elgendi1?igsh=ZjF2NjVqNzc0YjVl" target="_blank" rel="noopener noreferrer">Instagram</a> |
+    <a href="mailto:ahmedashraf2718@gmail.com">Email</a>
+  </footer>
+
+  <script>
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

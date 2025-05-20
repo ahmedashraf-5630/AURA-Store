@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - AURA Store</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/fav/apple-touch-icon.png">
+  <link rel="icon" type="fav/png" sizes="32x32" href="assets/fav/favicon-16x16.png">
+  <link rel="icon" type="fav/png" sizes="16x16" href="assets/fav/favicon-32x32.png">
+  <link rel="manifest" href="assets/site.webmanifest">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #e0f7fa, #f9f9f9);
+      color: #333;
+      animation: fadeIn 1s ease-in;
+      padding: 40px 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+      background-color: #2b433b;
+      padding: 15px 30px;
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: slideDown 0.7s ease-in-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .header-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      user-select: none;
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    nav ul li a {
+      color: #cbe9f7;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    #logoutBtn {
+      background: linear-gradient(45deg, #688793, #000000);
+      border: none;
+      color: white;
+      padding: 8px 18px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #logoutBtn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, #e53935, #d32f2f);
+    }
+
+    main {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #ffffffc7;
+      padding: 40px 40px 50px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease;
+    }
+
+    main h2 {
+      color: #2b433b;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #2b433b;
+    }
+
+    input, textarea {
+      padding: 12px 15px;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #2b433b;
+      outline: none;
+    }
+
+    button {
+      background-color: #2b433b;
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1e2b27;
+    }
+
+    #confirmationMsg {
+      margin-top: 15px;
+      font-weight: 700;
+      color: green;
+      text-align: center;
+      display: none;
+    }
+
+    footer {
+      background-color: #2b3e2f;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 60px;
+      font-size: 0.95rem;
+      user-select: none;
+    }
+
+    footer a {
+      color: #032210;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="dashboard.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <h1 class="header-title">AURA Store</h1>
+    <button id="logoutBtn">Log Out</button>
+  </header>
+
+  <main>
+    <h2>Contact Us</h2>
+    <form id="contactForm" novalidate>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+    <div id="confirmationMsg">Thank you for contacting us! We'll get back to you shortly.</div>
+  </main>
+
+  <footer>
+    &copy; 2025 AURA Store. All rights reserved.<br />
+    <a href="https://www.facebook.com/share/1AKR8BUTaT/" target="_blank" rel="noopener noreferrer">Facebook</a> |
+    <a href="https://www.instagram.com/ahmed_elgendi1?igsh=ZjF2NjVqNzc0YjVl" target="_blank" rel="noopener noreferrer">Instagram</a> |
+    <a href="mailto:ahmedashraf2718@gmail.com">Email</a>
+  </footer>
+
+  <script>
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      window.location.href = 'index.html';
+    });
+
+    const form = document.getElementById('contactForm');
+    const confirmationMsg = document.getElementById('confirmationMsg');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Validate email (simple regex)
+      const email = form.email.value.trim();
+      const phone = form.phone.value.trim();
+      const message = form.message.value.trim();
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        form.email.focus();
+        return;
+      }
+
+      if (phone.length === 0) {
+        alert('Please enter your phone number.');
+        form.phone.focus();
+        return;
+      }
+
+      if (message.length === 0) {
+        alert('Please enter your message.');
+        form.message.focus();
+        return;
+      }
+
+      // If all valid, show confirmation message and clear form
+      confirmationMsg.style.display = 'block';
+      form.reset();
+
+      // Hide confirmation after 5 seconds
+      setTimeout(() => {
+        confirmationMsg.style.display = 'none';
+      }, 5000);
+    });
+  </script>
+</body>
+</html>

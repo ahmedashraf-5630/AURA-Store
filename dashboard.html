@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AURA Store</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/fav/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/fav/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/fav/favicon-16x16.png">
+  <link rel="manifest" href="assets/site.webmanifest">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #e0f7fa, #f9f9f9);
+      color: #333;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+      background-color: #2b433b;
+      padding: 15px 20px;
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      animation: slideDown 0.7s ease-in-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .header-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      user-select: none;
+      margin: 10px 0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      color: #cbe9f7;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    #logoutBtn {
+      background: linear-gradient(45deg, #688793, #000000);
+      border: none;
+      color: white;
+      padding: 8px 18px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    #logoutBtn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, #e53935, #d32f2f);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 40px auto;
+      background-color: #ffffffc7;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      animation: fadeIn 1s ease;
+    }
+
+    .product {
+      background-color: #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      padding: 10px;
+      animation: floatUp 0.6s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    }
+
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+      max-height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.4s ease;
+    }
+
+    .product:hover img {
+      transform: scale(1.05);
+    }
+
+    .price {
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #2e7d32;
+    }
+
+    footer {
+      background-color: #2b3e2f;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 60px;
+      font-size: 0.95rem;
+      user-select: none;
+    }
+
+    footer a {
+      color: #cbe9f7;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* ✅ Media Queries للتجاوب مع الموبايل */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      #logoutBtn {
+        align-self: flex-end;
+      }
+
+      .header-title {
+        margin: 10px 0;
+      }
+
+      main {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="dashboard.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <h1 class="header-title">AURA Store</h1>
+    <button id="logoutBtn">Log Out</button>
+  </header>
+
+  <main>
+    <div class="product-list">
+      <div class="product"><img src="image/ahmed.png" alt="Shoe 1"><div class="price">Price: 320 USD</div></div>
+      <div class="product"><img src="image/ashraf.png" alt="Shoe 2"><div class="price">Price: 300 USD</div></div>
+      <div class="product"><img src="image/jj.png" alt="Shoe 3"><div class="price">Price: 350 USD</div></div>
+      <div class="product"><img src="image/ll.png" alt="Shoe 4"><div class="price">Price: 400 USD</div></div>
+      <div class="product"><img src="image/oo.png" alt="Shoe 5"><div class="price">Price: 280 USD</div></div>
+      <div class="product"><img src="image/polo.png" alt="Shoe 6"><div class="price">Price: 360 USD</div></div>
+      <div class="product"><img src="image/pola.png" alt="Shoe 7"><div class="price">Price: 310 USD</div></div>
+      <div class="product"><img src="image/pp.png" alt="Shoe 8"><div class="price">Price: 420 USD</div></div>
+      <div class="product"><img src="image/s.png" alt="Shoe 9"><div class="price">Price: 390 USD</div></div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 AURA Store. All rights reserved.<br />
+    <a href="https://www.facebook.com/share/1AKR8BUTaT/" target="_blank">Facebook</a> |
+    <a href="https://www.instagram.com/ahmed_elgendi1?igsh=ZjF2NjVqNzc0YjVl" target="_blank">Instagram</a> |
+    <a href="mailto:ahmedashraf2718@gmail.com">Email</a>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.product').forEach(product => {
+      product.addEventListener('click', () => {
+        const price = product.querySelector('.price').textContent;
+        alert(`You clicked on a product. ${price}`);
+      });
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
