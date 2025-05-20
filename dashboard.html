@@ -219,15 +219,33 @@
 
   <main>
     <div class="product-list">
+      <a href="T1.html">
       <div class="product"><img src="image/ahmed.png" alt="Shoe 1"><div class="price">Price: 320 USD</div></div>
+      </a>
+      <a href="T2.html">
       <div class="product"><img src="image/ashraf.png" alt="Shoe 2"><div class="price">Price: 300 USD</div></div>
+      </a>
+      <a href="T3.html">
       <div class="product"><img src="image/jj.png" alt="Shoe 3"><div class="price">Price: 350 USD</div></div>
+      </a>
+      <a href="T4.html">
       <div class="product"><img src="image/ll.png" alt="Shoe 4"><div class="price">Price: 400 USD</div></div>
+      </a>
+      <a href="T5.html">
       <div class="product"><img src="image/oo.png" alt="Shoe 5"><div class="price">Price: 280 USD</div></div>
+      </a>
+      <a href="T6.html">
       <div class="product"><img src="image/polo.png" alt="Shoe 6"><div class="price">Price: 360 USD</div></div>
+      </a>
+      <a href="T7.html">
       <div class="product"><img src="image/pola.png" alt="Shoe 7"><div class="price">Price: 310 USD</div></div>
+      </a>
+      <a href="T8.html">
       <div class="product"><img src="image/pp.png" alt="Shoe 8"><div class="price">Price: 420 USD</div></div>
+      </a>
+      <a href="T9.html">
       <div class="product"><img src="image/s.png" alt="Shoe 9"><div class="price">Price: 390 USD</div></div>
+      </a>
     </div>
   </main>
 
@@ -239,13 +257,6 @@
   </footer>
 
   <script>
-    document.querySelectorAll('.product').forEach(product => {
-      product.addEventListener('click', () => {
-        const price = product.querySelector('.price').textContent;
-        alert(`You clicked on a product. ${price}`);
-      });
-    });
-
     document.getElementById('logoutBtn').addEventListener('click', () => {
       window.location.href = 'index.html';
     });
