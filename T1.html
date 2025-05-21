@@ -10,33 +10,39 @@
       margin: 0;
       padding: 0;
     }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(120deg, #e0f7fa, #f9f9f9);
       color: #333;
-      animation: fadeIn 0.5s ease-in;
     }
-
     header {
       background-color: #2b433b;
       color: white;
       padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       position: sticky;
       top: 0;
       z-index: 100;
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
-
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
     .header-title {
       font-size: 1.5rem;
       font-weight: bold;
-      user-select: none;
     }
-
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+    }
     #logoutBtn {
       background-color: #444;
       color: white;
@@ -45,13 +51,7 @@
       border: none;
       border-radius: 20px;
       cursor: pointer;
-      transition: 0.3s;
     }
-
-    #logoutBtn:hover {
-      background-color: #e53935;
-    }
-
     main {
       max-width: 800px;
       margin: 30px auto;
@@ -60,44 +60,38 @@
       border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
-
     .product-image {
       text-align: center;
       margin-bottom: 20px;
-      
     }
-
     .product-image img {
       max-width: 250px;
       border-radius: 12px;
     }
-
     form label {
       display: block;
       margin-top: 15px;
       font-weight: bold;
     }
-
     form input[type="text"],
     form input[type="number"],
-    form input[type="email"] {
+    form input[type="email"],
+    select {
       width: 100%;
       padding: 10px;
       border-radius: 8px;
       border: 1px solid #ccc;
       margin-top: 5px;
+      margin-bottom: 16px;
     }
-
     .payment-methods {
       margin-top: 15px;
     }
-
     .payment-methods label {
       font-weight: normal;
       display: inline-block;
       margin-right: 15px;
     }
-
     .visa-details {
       display: none;
       margin-top: 15px;
@@ -105,16 +99,7 @@
       padding: 15px;
       border-radius: 10px;
     }
-    input, select {
-  padding: 10px;
-  width: 100%;
-  margin-bottom: 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-    button[type="submit"] {
+    button[type="button"] {
       margin-top: 25px;
       background-color: #2b433b;
       color: white;
@@ -123,18 +108,14 @@
       border-radius: 8px;
       font-size: 1rem;
       cursor: pointer;
-      transition: 0.3s;
     }
-
-    button[type="submit"]:hover {
+    button[type="button"]:hover {
       background-color: #1f302a;
     }
-
     @media (max-width: 600px) {
       main {
         padding: 20px;
       }
-
       .product-image img {
         max-width: 100%;
       }
@@ -142,80 +123,126 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-title">AURA Store</div>
-    <button id="logoutBtn">Logout</button>
-  </header>
 
-  <main>
-    <div class="product-image">
-      <img src="image/ahmed.png" alt="Selected Product">
+<header>
+  <nav>
+    <div class="header-title">AURA Store</div>
+    <ul class="nav-links">
+      <li><a href="dashboard.html">Products</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <button id="logoutBtn">Logout</button>
+  </nav>
+</header>
+
+<main>
+  <div class="product-image">
+    <img src="image/ahmed.png" alt="Selected Product">
+  </div>
+
+  <form id="orderForm">
+    <label>Price (USD)</label>
+    <input type="text" value="320" readonly>
+
+    <label>Quantity</label>
+    <input type="number" min="1" value="1" required>
+
+    <label>Size</label>
+    <select required>
+      <option value="" disabled selected>Select your size</option>
+      <option value="S">(S)</option>
+      <option value="M">(M)</option>
+      <option value="L">(L)</option>
+      <option value="XL">(XL)</option>
+      <option value="XXL">(XXL)</option>
+    </select>
+
+    <label>Shipping Address</label>
+    <input type="text" placeholder="Enter your address" required>
+
+    <label>Email (for confirmation)</label>
+    <input type="email" placeholder="example@email.com" required>
+
+    <div class="payment-methods">
+      <label><input type="radio" name="payment" value="cod" checked> Cash on Delivery</label>
+      <label><input type="radio" name="payment" value="visa"> Visa</label>
     </div>
 
-    <form>
-      <label>Price (USD)</label>
-      <input type="text" value="320" readonly>
+    <div class="visa-details" id="visaDetails">
+      <label>Cardholder Name</label>
+      <input type="text" placeholder="Name on Card" id="cardName">
 
-      <label>Quantity</label>
-      <input type="number" min="1" value="1">
-      
-      <label>Size</label>
-<select required>
-  <option value="" disabled selected>Select your size</option>
-  <option value="S">(S)</option>
-  <option value="M">(M)</option>
-  <option value="L">(L)</option>
-  <option value="XL">(XL)</option>
-  <option value="XXL">(XXL)</option>
-</select>
+      <label>Card Number</label>
+      <input type="text" placeholder="XXXX XXXX XXXX XXXX" id="cardNumber">
 
-      <label>Shipping Address</label>
-      <input type="text" placeholder="Enter your address" required>
+      <label>Expiry Date</label>
+      <input type="text" placeholder="MM/YY" id="expiryDate">
 
-      <label>Email (for confirmation)</label>
-      <input type="email" placeholder="example@email.com" required>
+      <label>CVV</label>
+      <input type="text" placeholder="123" id="cvv">
+    </div>
 
-      <div class="payment-methods">
-        <label><input type="radio" name="payment" value="cod" checked> Cash on Delivery</label>
-        <label><input type="radio" name="payment" value="visa"> Visa</label>
-      </div>
+    <button type="button" id="placeOrderBtn">Place Order</button>
+  </form>
+</main>
 
-      <div class="visa-details" id="visaDetails">
-        <label>Cardholder Name</label>
-        <input type="text" placeholder="Name on Card">
+<script>
+  const paymentRadios = document.querySelectorAll('input[name="payment"]');
+  const visaSection = document.getElementById('visaDetails');
+  const placeOrderBtn = document.getElementById('placeOrderBtn');
+  const orderForm = document.getElementById('orderForm');
 
-        <label>Card Number</label>
-        <input type="text" placeholder="XXXX XXXX XXXX XXXX">
+  const cardName = document.getElementById('cardName');
+  const cardNumber = document.getElementById('cardNumber');
+  const expiryDate = document.getElementById('expiryDate');
+  const cvv = document.getElementById('cvv');
 
-        <label>Expiry Date</label>
-        <input type="text" placeholder="MM/YY">
+  function isVisaSelected() {
+    return document.querySelector('input[name="payment"]:checked').value === 'visa';
+  }
 
-        <label>CVV</label>
-        <input type="text" placeholder="123">
-      </div>
+  function updateVisaRequiredState() {
+    const required = isVisaSelected();
+    cardName.required = required;
+    cardNumber.required = required;
+    expiryDate.required = required;
+    cvv.required = required;
+    visaSection.style.display = required ? 'block' : 'none';
+  }
 
-      <button type="submit">Place Order</button>
-    </form>
-  </main>
+  paymentRadios.forEach(radio => {
+    radio.addEventListener('change', updateVisaRequiredState);
+  });
 
-  <script>
-    const paymentRadios = document.querySelectorAll('input[name="payment"]');
-    const visaSection = document.getElementById('visaDetails');
+  updateVisaRequiredState(); // لتحديث الحالة عند التحميل
 
-    paymentRadios.forEach(radio => {
-      radio.addEventListener('change', () => {
-        if (radio.value === 'visa') {
-          visaSection.style.display = 'block';
-        } else {
-          visaSection.style.display = 'none';
-        }
-      });
-    });
+  placeOrderBtn.addEventListener('click', () => {
+    if (!orderForm.checkValidity()) {
+      orderForm.reportValidity();
+      return;
+    }
 
-    document.getElementById('logoutBtn').addEventListener('click', () => {
-      window.location.href = 'index.html';
-    });
-  </script>
-  
+    if (isVisaSelected()) {
+      if (
+        cardName.value.trim() === "" ||
+        cardNumber.value.trim() === "" ||
+        expiryDate.value.trim() === "" ||
+        cvv.value.trim() === ""
+      ) {
+        alert("Please complete all visa card details.");
+        return;
+      }
+    }
+
+    // كل حاجة تمام، نحول للصفحة
+    window.location.href = "thank.html";
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    window.location.href = 'index.html';
+  });
+</script>
+
 </body>
 </html>
