@@ -4,107 +4,103 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Login</title>
-  <link rel="stylesheet" href="assets/style.css" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/fav/apple-touch-icon.png">
-<link rel="icon" type="fav/png" sizes="32x32" href="assets/fav/favicon-16x16.png">
-<link rel="icon" type="fav/png" sizes="16x16" href="assets/fav/favicon-32x32.png">
-<link rel="manifest" href="assets/site.webmanifest">
+   <link rel="apple-touch-icon" sizes="180x180" href="/www/assets/fav/apple-touch-icon.png">
+  <link rel="icon" type="fav/png" sizes="32x32" href="/www/assets/fav/favicon-16x16.png">
+  <link rel="icon" type="fav/png" sizes="16x16" href="/www/assets/fav/favicon-32x32.png">
+  <link rel="manifest" href="/www/assets/site.webmanifest">
 </head>
 <body>
-<div class="circle-wrap">
-  <div class="orbit-animation orbit1"></div>
-  <div class="orbit-animation orbit2"></div>
-  <div class="orbit-animation orbit3"></div>
-  <div class="login-box">
-    <h2>Login</h2>
-    <form id="auth-form" onsubmit="handleLogin(event)">
-      <div class="input-box">
-        <input id="email" type="email" required placeholder="Email" />
-      </div>
-      <div class="input-box">
-        <input id="password" type="password" required placeholder="Password" />
-      </div>
-      <div class="actions">
-        <a href="signup.html">Signup</a>
-        <a href="#" onclick="handleForgotPassword()">Forgot Password?</a>
-      </div>
-      <button type="submit" class="gradient-btn">Login</button>
-    </form>
-    <div class="message" id="message"></div>
-  </div>
-</div>
+  <main class="circle-wrap">
+    <aside class="orbit-animation orbit1"></aside>
+    <aside class="orbit-animation orbit2"></aside>
+    <aside class="orbit-animation orbit3"></aside>
 
-<!-- Firebase SDK -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+    <section class="login-box">
+      <h2>Login</h2>
+      <form id="auth-form" onsubmit="handleLogin(event)">
+        <div class="input-box">
+          <input id="email" type="email" required placeholder="Email" />
+        </div>
+        <div class="input-box">
+          <input id="password" type="password" required placeholder="Password" />
+        </div>
+        <nav class="actions">
+          <a href="signup.html">Signup</a>
+          <a href="#" onclick="handleForgotPassword()">Forgot Password?</a>
+        </nav>
+        <button type="submit" class="gradient-btn">Login</button>
+      </form>
+      <p class="message" id="message"></p>
+    </section>
+  </main>
 
-  // Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyCLjpc1FhdRjkWPeByfAd2xl2v-SOcIt10",
-    authDomain: "aura-store-214ba.firebaseapp.com",
-    projectId: "aura-store-214ba",
-    storageBucket: "aura-store-214ba.appspot.com",
-    messagingSenderId: "92883517624",
-    appId: "1:92883517624:web:a37b855bbe62ca5509744d",
-    measurementId: "G-YHMY398ZXF"
-  };
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+    const firebaseConfig = {
+      apiKey: "AIzaSyCLjpc1FhdRjkWPeByfAd2xl2v-SOcIt10",
+      authDomain: "aura-store-214ba.firebaseapp.com",
+      projectId: "aura-store-214ba",
+      storageBucket: "aura-store-214ba.appspot.com",
+      messagingSenderId: "92883517624",
+      appId: "1:92883517624:web:a37b855bbe62ca5509744d",
+      measurementId: "G-YHMY398ZXF"
+    };
 
-  // Login handler
-  window.handleLogin = function(event) {
-    event.preventDefault();
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value;
-    const messageDiv = document.getElementById('message');
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        messageDiv.style.color = 'green';
-        messageDiv.textContent = 'Login successful!';
-        window.location.href = 'dashboard.html';
-      })
-      .catch((error) => {
-        messageDiv.style.color = '#ff4d4d';
-        messageDiv.textContent = error.message;
-      });
-  }
+    window.handleLogin = function(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const messageDiv = document.getElementById('message');
 
-  // Forgot Password
-  window.handleForgotPassword = function() {
-    const email = prompt("Please enter your registered email:");
-    if (!email) return;
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          messageDiv.style.color = 'green';
+          messageDiv.textContent = 'Login successful!';
+          window.location.href = 'dashboard.html';
+        })
+        .catch((error) => {
+          messageDiv.style.color = '#ff4d4d';
+          messageDiv.textContent = error.message;
+        });
+    }
 
-    sendPasswordResetEmail(auth, email.trim())
-      .then(() => {
-        alert("Password reset email sent! Check your inbox.");
-      })
-      .catch((error) => {
-        alert("Error: " + error.message);
-      });
-  }
-</script>
+    window.handleForgotPassword = function() {
+      const email = prompt("Please enter your registered email:");
+      if (!email) return;
 
-<!-- Orbit Animation Script -->
-<script>
-  const orbit1 = document.querySelector('.orbit1');
-  const orbit2 = document.querySelector('.orbit2');
-  const orbit3 = document.querySelector('.orbit3');
+      sendPasswordResetEmail(auth, email.trim())
+        .then(() => {
+          alert("Password reset email sent! Check your inbox.");
+        })
+        .catch((error) => {
+          alert("Error: " + error.message);
+        });
+    }
+  </script>
 
-  let angle1 = 0, angle2 = 0, angle3 = 0;
-  function animate() {
-    angle1 = (angle1 + 0.4) % 360;
-    angle2 = (angle2 - 0.6) % 360;
-    angle3 = (angle3 + 0.8) % 360;
-    orbit1.style.transform = `rotate(${angle1}deg)`;
-    orbit2.style.transform = `rotate(${angle2}deg)`;
-    orbit3.style.transform = `rotate(${angle3}deg)`;
-    requestAnimationFrame(animate);
-  }
-  animate();
-</script>
+  <!-- Orbit Animation Script -->
+  <script>
+    const orbit1 = document.querySelector('.orbit1');
+    const orbit2 = document.querySelector('.orbit2');
+    const orbit3 = document.querySelector('.orbit3');
+
+    let angle1 = 0, angle2 = 0, angle3 = 0;
+    function animate() {
+      angle1 = (angle1 + 0.4) % 360;
+      angle2 = (angle2 - 0.6) % 360;
+      angle3 = (angle3 + 0.8) % 360;
+      orbit1.style.transform = `rotate(${angle1}deg)`;
+      orbit2.style.transform = `rotate(${angle2}deg)`;
+      orbit3.style.transform = `rotate(${angle3}deg)`;
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
 </body>
 </html>
